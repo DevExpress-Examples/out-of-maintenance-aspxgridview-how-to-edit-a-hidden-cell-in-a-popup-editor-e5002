@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 
 public partial class _Default : System.Web.UI.Page {
     protected void tb_Init(object sender, EventArgs e) {
@@ -16,7 +15,7 @@ public partial class _Default : System.Web.UI.Page {
         tb.ClientSideEvents.GotFocus = String.Format("function(s, e) {{ OnGotFocus(s, e, '{0}', '{1}') }}", container.VisibleIndex, text);
     }
 
-    protected void cp_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e) {
+    protected void cp_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e) {
         if (hf.Contains("tb") && hf.Contains("memo")) {
             ads.UpdateParameters["CategoryID"].DefaultValue = gv.GetRowValues(gv.EditingRowVisibleIndex, gv.KeyFieldName).ToString();
             ads.UpdateParameters["CategoryName"].DefaultValue = hf["tb"].ToString();
